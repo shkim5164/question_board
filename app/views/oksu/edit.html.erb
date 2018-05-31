@@ -1,0 +1,18 @@
+<h1>여기는 <%= @numb %>번 게시물 edit페이지입니다.</h1>
+
+<% @record.each do |f| %>
+    <form action="/oksu/update/<%= f.id %>" method="post">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">작성자</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="여기다가 질문자의 이름을 입력하세요." name="name" value="<%= f.ilbyng%>">
+      </div>
+      
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">질문내용</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"><%= f.sangbyng %></textarea>
+      </div>
+      
+      <button type="submit">제출하기!</button>
+      
+    </form>
+<% end %>

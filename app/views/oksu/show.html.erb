@@ -1,0 +1,37 @@
+ <a href="/">목록가기</a>
+  <div class="jumbotron">
+      <h3>질문자 : <%= @q_dance.ilbyng %></h3>
+      <hr class="my-4">
+      <p><%= @q_dance.sangbyng %></p>
+      <a href="/oksu/edit/<%= @q_dance.id %>"><%= @q_dance.id %>번 수정하기</a>
+      <a href="/oksu/delete/<%= @q_dance.id %>">삭제하기</a>
+  </div>
+    
+<!--여기부터 답변 양식입니다.-->
+
+<form action="/yahak/make" method="post">
+  <input type="hidden" name="q_id" value="<%= @q_dance.id %>">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">답변자</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="여기다가 답변자의 이름을 입력하세요." name="name">
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">답변내용</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+  </div>
+  
+  <button type="submit">답변하기!</button>
+  
+</form>
+
+<!--여기부터는 답변들입니다.-->
+<% @a_dance.each do |a| %>
+ <div class="jumbotron">
+      <h3>답변자 : <%= a.name %></h3>
+      <hr class="my-4">
+      <p><%= a.content %></p>
+
+      <a href="/yahak/destroy/<%= a.id %>">삭제하기</a>
+  </div>
+<% end %>

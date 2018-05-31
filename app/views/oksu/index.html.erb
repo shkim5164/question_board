@@ -1,0 +1,20 @@
+<h1>질문게시판에 온 여러분을 환영합니다!!</h1>
+<a href="/oksu/write">새글쓰러가기</a>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">작성자</th>
+      <th scope="col">질문</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @allrecord.each do |d| %>
+        <tr>
+          <th scope="row"><%= d.id %></th>
+          <td><%= d.ilbyng %></td>
+          <td><a href="/oksu/show/<%= d.id %>"><%= d.sangbyng %></a></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
